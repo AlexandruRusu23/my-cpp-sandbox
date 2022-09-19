@@ -1,11 +1,12 @@
 #include <vector>
 
-class Solution {
+class Solution
+{
 public:
-    int removeElement(std::vector<int>& nums, int val) 
+    int removeElement(std::vector<int> &nums, int val)
     {
         int k = 0;
-        
+
         for (unsigned int i = 0; i < nums.size(); i++)
         {
             if (nums[i] != val)
@@ -14,7 +15,7 @@ public:
                 k++;
             }
         }
-        
+
         return k;
     }
 };

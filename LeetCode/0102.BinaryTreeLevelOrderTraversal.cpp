@@ -1,7 +1,8 @@
 #include <vector>
 #include <deque>
 
-struct TreeNode {
+struct TreeNode
+{
     int val;
     TreeNode *left;
     TreeNode *right;
@@ -10,20 +11,21 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-class Solution {
+class Solution
+{
 public:
-    std::vector<std::vector<int>> levelOrder(TreeNode* root)
+    std::vector<std::vector<int>> levelOrder(TreeNode *root)
     {
-        std::vector<std::vector<int>> output;    
-        
+        std::vector<std::vector<int>> output;
+
         if (root == nullptr)
             return output;
-        
-        std::deque<TreeNode*> nodes;
+
+        std::deque<TreeNode *> nodes;
         nodes.push_back(root);
         std::vector<int> level_nodes;
-        TreeNode* node = nullptr;
-        
+        TreeNode *node = nullptr;
+
         while (!nodes.empty())
         {
             int current_nodes = nodes.size();
@@ -40,7 +42,7 @@ public:
             output.emplace_back(level_nodes);
             level_nodes.clear();
         }
-        
+
         return output;
     }
 };

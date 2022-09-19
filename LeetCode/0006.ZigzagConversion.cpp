@@ -1,18 +1,20 @@
 #include <string>
 #include <vector>
 
-class Solution {
+class Solution
+{
 public:
-    std::string convert(std::string s, int numRows) {
+    std::string convert(std::string s, int numRows)
+    {
         if (numRows == 1)
             return s;
-        
-        std::vector<std::string> letters( numRows );
+
+        std::vector<std::string> letters(numRows);
 
         int index = 0;
         int row = 0;
         bool ascending = true;
-        
+
         while (index < s.size())
         {
             letters[row].push_back(s[index]);
@@ -39,13 +41,13 @@ public:
                 row++;
                 ascending = true;
                 continue;
-            }            
+            }
         }
-        
+
         std::string output = "";
-        for ( int i = 0; i < letters.size(); i++ )
+        for (int i = 0; i < letters.size(); i++)
         {
-            output += letters[ i ];
+            output += letters[i];
         }
 
         return output;

@@ -1,5 +1,6 @@
 
-struct ListNode {
+struct ListNode
+{
     int val;
     ListNode *next;
     ListNode() : val(0), next(nullptr) {}
@@ -7,18 +8,20 @@ struct ListNode {
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-class Solution {
+class Solution
+{
 public:
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+    ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
+    {
         bool carriedValue = false;
-        ListNode* output = new ListNode((l1->val + l2->val) % 10);
-        ListNode* returnList = output;
+        ListNode *output = new ListNode((l1->val + l2->val) % 10);
+        ListNode *returnList = output;
         if (l1->val + l2->val >= 10)
             carriedValue = true;
-        
+
         l1 = l1->next;
         l2 = l2->next;
-        
+
         while (l1 != nullptr || l2 != nullptr)
         {
             if (l1 != nullptr && l2 != nullptr)
@@ -71,10 +74,10 @@ public:
                 l2 = l2->next;
             }
         }
-        
+
         if (carriedValue)
             output->next = new ListNode(1);
-        
+
         return returnList;
     }
 };

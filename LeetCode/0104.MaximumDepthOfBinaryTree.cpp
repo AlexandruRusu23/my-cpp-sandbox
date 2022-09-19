@@ -1,6 +1,7 @@
 #include <deque>
 
-struct TreeNode {
+struct TreeNode
+{
     int val;
     TreeNode *left;
     TreeNode *right;
@@ -9,29 +10,32 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-class Solution {
+class Solution
+{
 public:
-    int maxDepthRecursive(TreeNode* root) {
+    int maxDepthRecursive(TreeNode *root)
+    {
         if (root == nullptr)
             return 0;
-        
+
         int left = maxDepth(root->left);
         int right = maxDepth(root->right);
-        
+
         return left > right ? left + 1 : right + 1;
     }
 
-    int maxDepth(TreeNode* root) {
+    int maxDepth(TreeNode *root)
+    {
         if (root == nullptr)
             return 0;
-        
-        std::deque<TreeNode*> nodes;
+
+        std::deque<TreeNode *> nodes;
         nodes.push_back(root);
-        
+
         int depth = 0;
         int max_depth = 0;
-        TreeNode* node;
-        while(!nodes.empty())
+        TreeNode *node;
+        while (!nodes.empty())
         {
             int n_nodes = nodes.size();
             depth++;
@@ -47,7 +51,7 @@ public:
                     nodes.push_back(node->right);
             }
         }
-        
+
         return max_depth;
     }
 };

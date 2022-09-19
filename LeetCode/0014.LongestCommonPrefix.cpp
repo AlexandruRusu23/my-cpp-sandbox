@@ -1,11 +1,13 @@
 #include <string>
 #include <vector>
 
-class Solution {
+class Solution
+{
 public:
-    std::string longestCommonPrefix(std::vector<std::string>& strs) {
+    std::string longestCommonPrefix(std::vector<std::string> &strs)
+    {
         std::string output = strs[0];
-        
+
         for (auto str : strs)
         {
             while (str.find(output) != 0)
@@ -15,7 +17,7 @@ public:
                     return "";
             }
         }
-        
+
         return output;
     }
 };

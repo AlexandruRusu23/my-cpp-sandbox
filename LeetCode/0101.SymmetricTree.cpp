@@ -1,5 +1,6 @@
 
-struct TreeNode {
+struct TreeNode
+{
     int val;
     TreeNode *left;
     TreeNode *right;
@@ -8,23 +9,25 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-class Solution {
+class Solution
+{
 public:
-    bool simetry(TreeNode* left, TreeNode* right)
+    bool simetry(TreeNode *left, TreeNode *right)
     {
         if (left == right)
             return true;
-        
+
         if (left == nullptr || right == nullptr)
             return false;
-        
+
         if (left->val != right->val)
             return false;
-        
+
         return simetry(left->left, right->right) & simetry(left->right, right->left);
     }
-    
-    bool isSymmetric(TreeNode* root) {
+
+    bool isSymmetric(TreeNode *root)
+    {
         return simetry(root->left, root->right);
     }
 };

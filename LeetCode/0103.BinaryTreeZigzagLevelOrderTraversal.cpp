@@ -2,7 +2,8 @@
 #include <deque>
 #include <algorithm>
 
-struct TreeNode {
+struct TreeNode
+{
     int val;
     TreeNode *left;
     TreeNode *right;
@@ -11,22 +12,23 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-class Solution {
+class Solution
+{
 public:
-    std::vector<std::vector<int>> zigzagLevelOrder(TreeNode* root)
+    std::vector<std::vector<int>> zigzagLevelOrder(TreeNode *root)
     {
         std::vector<std::vector<int>> output;
         if (root == nullptr)
             return output;
-        
-        std::deque<TreeNode*> nodes;
+
+        std::deque<TreeNode *> nodes;
         nodes.push_back(root);
         bool left = true;
         std::vector<int> level_nodes;
-        
+
         int n_nodes = 0;
-        TreeNode* node = nullptr;
-        
+        TreeNode *node = nullptr;
+
         while (!nodes.empty())
         {
             n_nodes = nodes.size();
@@ -40,15 +42,15 @@ public:
                     nodes.push_back(node->right);
                 nodes.pop_front();
             }
-            
+
             if (!left)
                 std::reverse(level_nodes.begin(), level_nodes.end());
-            
+
             output.emplace_back(level_nodes);
             level_nodes.clear();
             left = !left;
         }
-        
+
         return output;
     }
 };
