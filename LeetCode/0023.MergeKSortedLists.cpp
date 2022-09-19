@@ -1,6 +1,6 @@
 #include <queue>
 
-struct ListNode 
+struct ListNode
 {
     int val;
     ListNode *next;
@@ -9,14 +9,16 @@ struct ListNode
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-class Solution {
+class Solution
+{
 public:
-    ListNode* mergeKLists(std::vector<ListNode*>& lists) {
-        ListNode* head = nullptr;
-        ListNode* iter = nullptr;
-        
+    ListNode *mergeKLists(std::vector<ListNode *> &lists)
+    {
+        ListNode *head = nullptr;
+        ListNode *iter = nullptr;
+
         std::priority_queue<int, std::vector<int>, std::greater<int>> values;
-        
+
         for (int i = 0; i < lists.size(); i++)
         {
             while (lists[i])
@@ -25,7 +27,7 @@ public:
                 lists[i] = lists[i]->next;
             }
         }
-        
+
         while (!values.empty())
         {
             if (head == nullptr)
@@ -40,7 +42,7 @@ public:
             }
             values.pop();
         }
-        
+
         return head;
     }
 };

@@ -1,7 +1,8 @@
 #include <vector>
 #include <stack>
 
-struct TreeNode {
+struct TreeNode
+{
     int val;
     TreeNode *left;
     TreeNode *right;
@@ -10,43 +11,45 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-class Solution {
+class Solution
+{
 public:
     // recursive approach
-    void traverse(TreeNode* root, std::vector<int>& output)
+    void traverse(TreeNode *root, std::vector<int> &output)
     {
         if (root == nullptr)
             return;
-        
+
         traverse(root->left, output);
         output.emplace_back(root->val);
         traverse(root->right, output);
     }
-    
-    std::vector<int> inorderTraversal(TreeNode* root) {
-        if ( root == nullptr )
+
+    std::vector<int> inorderTraversal(TreeNode *root)
+    {
+        if (root == nullptr)
             return {};
 
         std::vector<int> output;
 
         // recursive approach
-        //traverse(root, output);
+        // traverse(root, output);
 
-        std::stack<TreeNode*> nodes;
+        std::stack<TreeNode *> nodes;
 
-        while ( root != nullptr || !nodes.empty() )
+        while (root != nullptr || !nodes.empty())
         {
             while (root != nullptr)
             {
                 nodes.push(root);
                 root = root->left;
             }
-            
+
             root = nodes.top();
             nodes.pop();
-            
+
             output.push_back(root->val);
-            
+
             root = root->right;
         }
 

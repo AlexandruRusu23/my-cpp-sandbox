@@ -1,11 +1,13 @@
 #include <string>
 #include <stack>
 
-class Solution {
+class Solution
+{
 public:
-    bool isValid(std::string s) {
+    bool isValid(std::string s)
+    {
         std::stack<char> parantheses;
-        
+
         for (char c : s)
         {
             if (c == '(' || c == '{' || c == '[')
@@ -26,7 +28,7 @@ public:
                 parantheses.pop();
             }
         }
-        
+
         if (parantheses.empty())
             return true;
         else
