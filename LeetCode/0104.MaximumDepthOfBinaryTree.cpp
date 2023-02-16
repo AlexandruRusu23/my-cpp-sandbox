@@ -13,15 +13,26 @@ struct TreeNode
 class Solution
 {
 public:
+    int maxDepth(TreeNode *root, int level)
+    {
+        if (root == nullptr)
+            return level;
+
+        int left = maxDepth(root->left, level + 1);
+        int right = maxDepth(root->right, level + 1);
+
+        return std::max(left, right);
+    }
+
     int maxDepthRecursive(TreeNode *root)
     {
         if (root == nullptr)
             return 0;
 
-        int left = maxDepth(root->left);
-        int right = maxDepth(root->right);
+        int left = maxDepth(root->left, 1);
+        int right = maxDepth(root->right, 1);
 
-        return left > right ? left + 1 : right + 1;
+        return std::max(left, right);
     }
 
     int maxDepth(TreeNode *root)
